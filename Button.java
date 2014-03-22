@@ -25,6 +25,7 @@ public class Button extends JButton implements ActionListener {
 			this.strs = strs;
 			this.setBounds(x, y, w, h);
 			setFontSize();
+			
 			repaint();
 			
 		}
@@ -43,16 +44,16 @@ public class Button extends JButton implements ActionListener {
 			int componentHeight = this.getHeight();
 
 			// Pick a new font size so it will not be larger than the height of label.
-			int fontSizeToUse = Math.min(newFontSize, componentHeight);
+			int fontSizeToUse = Math.min(Math.min(newFontSize, componentHeight), 20);
 
 			// Set the label's font size to the newly determined size.
-			this.setFont(new Font("Verdana", Font.PLAIN, fontSizeToUse));
+			this.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
 			
 		}
 		protected void paintComponent(Graphics g) {
             if (getModel().isPressed()) {
                 g.setColor(pressedBackgroundColor);
-                System.out.println("h");
+               
             } else if (getModel().isRollover()) {
                 g.setColor(hoverBackgroundColor);
             } else {

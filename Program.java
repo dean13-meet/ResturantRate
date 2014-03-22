@@ -1,11 +1,15 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 
 public class Program {
+	
+	ArrayList<JFrame> frames = new ArrayList<JFrame>();
+	ArrayList<String> framesId = new ArrayList<String>();
 
 	static JFrame initialF = new JFrame(); 
 	static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -23,7 +27,7 @@ public class Program {
 		initialF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		initialF.setTitle("ResturantRate"); 
 		initialF.getContentPane().setBackground(new Color(255,153,0));
-		System.out.println(initialF.getContentPane().getBackground());
+		
 		Display initialD = createDisplay(xOffSet, yOffSet, DISPLAY_WIDTH - (2*xOffSet), 
 				DISPLAY_HEIGHT - (2*yOffSet), initialF);
 
@@ -37,4 +41,37 @@ public class Program {
 
 		return new initialDisplay(x, y, w, h, f, this);
 	} 
+	public void createJFrame(double percentageOfScreenWidth, double percentageOfScreenHeight,
+			String title, Color background, Boolean resizable, final String id){
+		
+		final JFrame retVal = new JFrame();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		retVal.setSize((int)(width*percentageOfScreenWidth/100), (int)(height*percentageOfScreenHeight/100));
+		retVal.setLayout(null); 
+		retVal.setTitle(title); 
+		retVal.getContentPane().setBackground(background);
+		retVal.setVisible(true);
+		retVal.setResizable(resizable);
+		retVal.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		    	framesId.remove(id);
+		    	frames.remove(retVal);
+		    	
+		    }
+		});
+		framesId.add(id);
+		frames.add(retVal);
+		
+	}
+	public JFrame getJFrameById(String id){
+		int i = framesId.indexOf(id);
+		
+		if(i >=0 ){
+			return frames.get(i);
+		}
+		return null;
+	}
 }
