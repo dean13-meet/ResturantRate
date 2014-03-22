@@ -22,7 +22,7 @@ public class initialDisplay extends Display{
 
 	@Override
 	void init() {
-		String[] cAtext = {"Create Account"}; cAw = 200;	cAh = 70; cAx = (width-cAw)/2; cAy = (height-cAh)/2 -50;
+		String[] cAtext = new connectToServer().getAllLinesFromFileInArray("test.txt"); cAw = 200;	cAh = 70; cAx = (width-cAw)/2; cAy = (height-cAh)/2 -50;
 		createAccount = new Button(new createAccount(hostProgram),cAtext, cAx, cAy, cAw, cAh);
 		add(createAccount);
 		
