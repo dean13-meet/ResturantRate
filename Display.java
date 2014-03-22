@@ -23,8 +23,9 @@ abstract class Display extends JComponent {
 		height = h;
 		hostFrame = f;
 		hostProgram = program;
-		init();
 		this.setBounds(x, y, w, h);
+		init();
+		
 	}
 
 
