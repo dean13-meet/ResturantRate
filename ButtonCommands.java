@@ -42,6 +42,7 @@ class createAccount extends ButtonCommands{
 		Display createAccountD = new createAccountDisplay(0,0,createAccountF.getWidth(), createAccountF.getHeight(), createAccountF, p);
 		createAccountF.add(createAccountD);
 		}else{p.getJFrameById("createAccount").toFront();
+	
 		
 	}
 	}
@@ -64,6 +65,7 @@ class signIn extends ButtonCommands{
 		Display signInD = new signInDisplay(0,0,signInF.getWidth(), signInF.getHeight(), signInF, p);
 		signInF.add(signInD);
 		}else{p.getJFrameById("signIn").toFront();
+		
 			
 		}
 	}

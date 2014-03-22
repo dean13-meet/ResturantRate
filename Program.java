@@ -26,7 +26,7 @@ public class Program {
 		initialF.setLayout(null); 
 		initialF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		initialF.setTitle("ResturantRate"); 
-		initialF.getContentPane().setBackground(new Color(255,153,0));
+		initialF.getContentPane().setBackground(new Color(96,96,96));
 		
 		Display initialD = createDisplay(xOffSet, yOffSet, DISPLAY_WIDTH - (2*xOffSet), 
 				DISPLAY_HEIGHT - (2*yOffSet), initialF);
@@ -45,10 +45,8 @@ public class Program {
 			String title, Color background, Boolean resizable, final String id){
 		
 		final JFrame retVal = new JFrame();
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		double width = screenSize.getWidth();
-		double height = screenSize.getHeight();
-		retVal.setSize((int)(width*percentageOfScreenWidth/100), (int)(height*percentageOfScreenHeight/100));
+	
+		retVal.setSize((int)(DISPLAY_WIDTH*percentageOfScreenWidth/100), (int)(DISPLAY_HEIGHT*percentageOfScreenHeight/100));
 		retVal.setLayout(null); 
 		retVal.setTitle(title); 
 		retVal.getContentPane().setBackground(background);
